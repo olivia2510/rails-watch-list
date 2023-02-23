@@ -1,0 +1,9 @@
+<h1>Create a new list</h1>
+  <h2>My list</h2>
+    <%= link_to "Back to main page", lists_path %>
+
+  <%= simple_form_for(@list) do |f| %>
+  <%= f.input :name, placeholder: 'Genre'%>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+  <% end %>

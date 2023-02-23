@@ -1,0 +1,14 @@
+<h2><%= @list.title %> Movies</h2>
+
+<%= link_to "Back to main page", lists_path %>
+<%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
+<%= link_to "delete this list", list_path(@list), method: :delete %>
+
+<% @lists.movies.each do |movie| %>
+  <% @bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+  <%= movie.title %>
+  <%= movie.rating %>
+  <%= movie.overview %>
+  <%= @bookmark.comment %>
+<%end %>
+<%= link_to 'delete', bookmark_path(@bookmark), method: :delete, data: { confirm: "Are you sure?"}, class: 'text-danger' %>
